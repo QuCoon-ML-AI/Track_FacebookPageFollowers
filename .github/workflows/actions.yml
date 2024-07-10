@@ -40,7 +40,9 @@ jobs:
 
       - name: Pull
         run: |
-          git pull
+          git commit "action run"
+          git push
+          git pull --autostash
 
       - name: Check for changes
         run: |
