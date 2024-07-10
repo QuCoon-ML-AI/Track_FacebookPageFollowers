@@ -4,7 +4,7 @@ import csv
 from datetime import datetime
 
 ACCESS_TOKEN = os.getenv('FB_ACCESS_TOKEN')
-PAGE_ID = 'your_page_id'  # Replace with your actual Facebook Page ID
+PAGE_ID = '251848534689069'
 LOG_FILE = 'follower_count_log.csv'
 
 def fetch_follower_count():
