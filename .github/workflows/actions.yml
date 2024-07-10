@@ -3,9 +3,6 @@ name: Track Follower Growth
 on:
   schedule:
     - cron: '* * * * *'  # Runs every minute.
-  push:
-    branches:
-      - main
 
 jobs:
   track_follower_growth:
