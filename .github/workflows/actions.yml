@@ -2,7 +2,7 @@ name: Track Follower Growth
 
 on:
   schedule:
-    - cron: '0 14 * * *'  # this will run daily at 11 AM UTC, change to '0 23 * * *' for daily midnight Lagos time
+    - cron: '* 14 * * *'  # this will run daily at 11 AM UTC, change to '0 23 * * *' for daily midnight Lagos time
   push:
     branches:
       - main
