@@ -38,7 +38,7 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git add follower_counts.csv
+          git add follower_count_log.txt
           git commit -m "Update follower count log" || exit 0  # Avoid failure if no changes
           git pull --rebase
           git push
