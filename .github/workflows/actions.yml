@@ -2,7 +2,7 @@ name: Track Follower Growth
 
 on:
   schedule:
-    - cron: '* * * * *'  # this will run daily at 11 AM UTC, change to '0 23 * * *' for daily midnight Lagos time
+    - cron: '* * * * *'  # Runs every minute
   push:
     branches:
       - main
@@ -30,21 +30,18 @@ jobs:
           git config user.name "${{ secrets.GIT_USER }}"
           git config user.email "${{ secrets.GIT_EMAIL }}"
 
-
       - name: Run script
         env:
           FB_ACCESS_TOKEN: ${{ secrets.FB_ACCESS_TOKEN }}
-          
         run: |
           python main.py || exit 0  # Ignore script exit code if no changes to commit
 
-      - name: Pull
+      - name: Commit and push changes
         run: |
-          git pull --autostash
-
-      - name: Check for changes
-        run: |
-          git diff --quiet || git commit -am "Update follower count log" && git push
+          git add follower_counts.csv
+          git commit -m "Update follower count log" || exit 0  # Avoid failure if no changes
+          git pull --rebase
+          git push
 
       - name: Print status
         run: |
